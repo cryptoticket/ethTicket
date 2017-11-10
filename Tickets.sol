@@ -1,10 +1,10 @@
 contract Tickets {
 
-    string public name = "Crypto ticket";
-    string public symbol = "TIC";
+    string public name = "Kraftwerk";
+    string public symbol = "KKT";
     uint8 public decimals = 0;
 
-    address[30000] public holders;
+    address[1000] public holders;
     mapping(uint256 => bool) public usedTickets;
     mapping(uint256 => string) public additionalInfo;
     mapping(address => uint[16]) public seatsList;
@@ -19,11 +19,11 @@ contract Tickets {
     address nullAddress = 0x0;
 
     uint public limitPerHolder = 16;
-    uint public seatsCount = 30000;
+    uint public seatsCount = 1000;
     uint scaleMultiplier = 1000000000000000000; 
 
     uint public Rate_Eth = 298;
-    uint public Ticket_Price = 25*scaleMultiplier/Rate_Eth;
+    uint public Ticket_Price = 15*scaleMultiplier/Rate_Eth;
 
     modifier managerOnly { require(msg.sender == Manager); _; }
     modifier rateManagerOnly { require(msg.sender == ManagerForRate); _; }
@@ -44,7 +44,7 @@ contract Tickets {
 
     function setRate(uint _RateEth) external rateManagerOnly {
        Rate_Eth = _RateEth;
-       Ticket_Price = 25*scaleMultiplier/Rate_Eth;
+       Ticket_Price = 15*scaleMultiplier/Rate_Eth;
     }
 
 
